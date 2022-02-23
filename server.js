@@ -9,7 +9,7 @@ var blocked = require('./static/blocked.json');
 var reBlocked = require('./static/re_blocked.json');
 
 var port = process.env.PORT || 80;
-var subdomainsAsPath = false;
+var subdomainsAsPath = true;
 var serveHomepage = true;
 var serveHomepageOnAllSubdomains = false;
 
@@ -76,6 +76,10 @@ httpProxy.on('proxyReq', onProxyReq);
 
 var app = express();
 
+app.use(compression({
+  level: 6,
+  threshold: 1.5 * 1000
+}));
 app.use('/proxy', express.static('./static'));
 app.use('/proxy', api);
 
