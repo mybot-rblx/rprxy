@@ -1,4 +1,5 @@
 var proxy = require('http-proxy');
+var compression = require('compression');
 var express = require('express');
 var https = require('https');
 var url = require('url');
